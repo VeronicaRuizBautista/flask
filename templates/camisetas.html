@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Camisetas</title>
+    <title>Camiseta</title>
     <!-- <link rel="stylesheet" href='{{url_for("static", filename="css/style.css")}}'> -->
-    <link rel="stylesheet" href="../static/css/camisetas.css">
+    <link rel="stylesheet" href="../static/css/style.css">
     <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
     <script src="../static/js/main.js"></script>
 </head>
@@ -23,24 +23,24 @@
         </div>
         <nav class="categorias" id="menu">
             <ul>
-                <li class="home">
+                <li>
                     <i class='bx bx-closet'></i>
                     <a href="{{ url_for('index') }}">Todos los productos</a>
                 </li>
                 <li>
-                    <img src="storage/img/icons8-fireman-coat-50.png" alt="">
+                    <img src="../static/storage/img/icons8-fireman-coat-50.png" alt="">
                     <a href="{{ url_for('abrigos') }}">Abrigos</a>
                 </li>
-                <li>
-                    <img src="storage/img/icons8-polo-shirt-50.png" alt="">
-                    <a href="{{ url_for('abrigos') }}">Camisetas</a>
+                <li class="home">
+                    <img src="../static/storage/img/icons8-polo-shirt-50.png" alt="">
+                    <a href="{{ url_for('camisetas') }}">Camisetas</a>
                 </li>
                 <li>
-                    <img src="storage/img/icons8-pant.png" alt="">
+                    <img src="../static/storage/img/icons8-pant.png" alt="">
                     <a href="{{ url_for('pantalones') }}">Pantalones</a>
                 </li>
             </ul>
-        </nav>
+        </nav>        
         <nav class="carritos" id="menu">
             <i class='bx bxs-cart'></i>
             <a href="{{ url_for('carritos') }}">Carritos</a>
@@ -56,96 +56,20 @@
             <h1>Camisetas</h1>
         </div>
         <div class="main">
-            <div class="item01 c">
-                <img src="../storage/img/camisa01.png" alt="camisa01">
-                <div class="container">
-                    <p>Camiseta De Compresión En Licra Uv Slim</p>
-                    <div>
-                        <p>$ 1.000</p>
-                        <button onclick="incrementar('contador')">Agregar</button> 
-                    </div> 
-                </div>
-            </div>
-            <div class="item02 c">
-                <img src="../storage/img/camisa02.png" alt="camisa02">
-                <div class="container">
-                    <p>Camiseta Tipo Polo Color Dama Mujer</p>
-                    <div>
-                        <p>$ 2.000</p>
-                        <button onclick="incrementar('contador')">Agregar</button>
+            {% for item in data %}
+            {% if item.get("id") =="camiseta" %}
+                <div class="item">
+                    <img src='{{item.get("img")}}' alt="camiseta01">
+                    <div class="container">
+                        <p>{{item.get("description")}}</p>
+                        <div>
+                            <p>$ {{item.get("value")}}</p>
+                            <button onclick="incrementar('contador')">Agregar</button> 
+                        </div> 
                     </div>
                 </div>
-            </div>
-            <div class="item03 c">
-                <img src="../storage/img/camisa03.png" alt="camisa03">
-                <div class="container">
-                    <p>Camiseta Deportiva, Crossfit, Gym, Ejercicios Al Aire Libre</p>
-                    <div>
-                        <p>$ 2.500</p>
-                        <button onclick="incrementar('contador')">Agregar</button>
-                    </div>
-                </div>
-            </div>
-            <div class="item04 c">
-                <img src="../storage/img/camisa04.png" alt="camisa04">
-                <div class="container">
-                    <p>Camisetas Bandas De Rock Metal Heavy Riffs</p>
-                    <div>
-                        <p>$ 2.500</p>
-                        <button onclick="incrementar('contador')">Agregar</button>
-                    </div>
-                </div>
-            </div>
-            <div class="item05 c">
-                <img src="../storage/img/camisa05.png" alt="camisa05">
-                <div class="container">
-                    <p>Camiseta Anime Nezuko Kamado Kimetsu No Yaiba Demon Slayer</p>
-                    <div>
-                        <p>$ 2.000</p>
-                        <button onclick="incrementar('contador')">Agregar</button>
-                    </div>
-                </div>
-            </div>
-            <div class="item06 c">
-                <img src="../storage/img/camisa06.png" alt="camisa06">
-                <div class="container">
-                    <p> Camisa de algodon negra semformal</p>
-                    <div>
-                        <p>$ 2.500</p>
-                        <button onclick="incrementar('contador')">Agregar</button>
-                    </div>
-                </div>
-            </div>
-            <div class="item07 c">
-                <img src="../storage/img/camisa07.png" alt="camisa07">
-                <div class="container">
-                    <p>Camisa de Cuadros Manga corta, Para Hombre</p>
-                    <div>
-                        <p>$ 2.000</p>
-                        <button onclick="incrementar('contador')">Agregar</button>
-                    </div>
-                </div>
-            </div>
-            <div class="item08 c">
-                <img src="../storage/img/camisa08.png" alt="camisa08">
-                <div class="container">
-                    <p>Camiseta de Cuadros Roja con negro unisex</p>
-                    <div>
-                        <p>$ 2.000</p>
-                        <button onclick="incrementar('contador')">Agregar</button>
-                    </div>
-                </div>
-            </div>
-            <div class="item09 c">
-                <img src="../storage/img/camisa09.png" alt="pantalon09">
-                <div class="container">
-                    <p>Camisa de lineas algodon artificial</p>
-                    <div>
-                        <p>$ 2.500</p>
-                        <button onclick="incrementar('contador')">Agregar</button>
-                    </div>
-                </div>
-            </div>
+            {% endif %}
+            {% endfor %}
         </div>
     </main>
 </body>

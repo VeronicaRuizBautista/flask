@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pantalones</title>
+    <title>Camiseta</title>
     <!-- <link rel="stylesheet" href='{{url_for("static", filename="css/style.css")}}'> -->
-    <link rel="stylesheet" href="../static/css/pantalones.css">
+    <link rel="stylesheet" href="../static/css/style.css">
     <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
     <script src="../static/js/main.js"></script>
 </head>
@@ -23,24 +23,24 @@
         </div>
         <nav class="categorias" id="menu">
             <ul>
-                <li class="home">
+                <li>
                     <i class='bx bx-closet'></i>
                     <a href="{{ url_for('index') }}">Todos los productos</a>
                 </li>
                 <li>
-                    <img src="storage/img/icons8-fireman-coat-50.png" alt="">
+                    <img src="../static/storage/img/icons8-fireman-coat-50.png" alt="">
                     <a href="{{ url_for('abrigos') }}">Abrigos</a>
                 </li>
                 <li>
-                    <img src="storage/img/icons8-polo-shirt-50.png" alt="">
-                    <a href="{{ url_for('abrigos') }}">Camisetas</a>
+                    <img src="../static/storage/img/icons8-polo-shirt-50.png" alt="">
+                    <a href="{{ url_for('camisetas') }}">Camisetas</a>
                 </li>
-                <li>
-                    <img src="storage/img/icons8-pant.png" alt="">
+                <li class="home">
+                    <img src="../static/storage/img/icons8-pant.png" alt="">
                     <a href="{{ url_for('pantalones') }}">Pantalones</a>
                 </li>
             </ul>
-        </nav>
+        </nav>        
         <nav class="carritos" id="menu">
             <i class='bx bxs-cart'></i>
             <a href="{{ url_for('carritos') }}">Carritos</a>
@@ -56,96 +56,20 @@
             <h1>Pantalones</h1>
         </div>
         <div class="main">
-            <div class="item01 c">
-                <img src="../storage/img/pantalon01.png" alt="pantalon01">
-                <div class="container">
-                    <p>Pantalon En Dril Licrado Para Hombre</p>
-                    <div>
-                        <p>$ 1.000</p>
-                        <button onclick="incrementar('contador')">Agregar</button> 
-                    </div> 
-                </div>
-            </div>
-            <div class="item02 c">
-                <img src="../storage/img/pantalon02.png" alt="pantalon02">
-                <div class="container">
-                    <p>Pantalón Camuflado Hermoso</p>
-                    <div>
-                        <p>$ 2.000</p>
-                        <button onclick="incrementar('contador')">Agregar</button>
+            {% for item in data %}
+            {% if item.get("id") =="pantalon" %}
+                <div class="item">
+                    <img src='{{item.get("img")}}' alt="pantalon01">
+                    <div class="container">
+                        <p>{{item.get("description")}}</p>
+                        <div>
+                            <p>$ {{item.get("value")}}</p>
+                            <button onclick="incrementar('contador')">Agregar</button> 
+                        </div> 
                     </div>
                 </div>
-            </div>
-            <div class="item03 c">
-                <img src="../storage/img/pantalon03.png" alt="pantalon03">
-                <div class="container">
-                    <p>Pantalón Jogger Cargo, Táctico, Militar</p>
-                    <div>
-                        <p>$ 2.500</p>
-                        <button onclick="incrementar('contador')">Agregar</button>
-                    </div>
-                </div>
-            </div>
-            <div class="item04 c">
-                <img src="../storage/img/pantalon04.png" alt="pantalon04">
-                <div class="container">
-                    <p>Pantalón Jeans De Colores Entubado Para Hombre</p>
-                    <div>
-                        <p>$ 2.500</p>
-                        <button onclick="incrementar('contador')">Agregar</button>
-                    </div>
-                </div>
-            </div>
-            <div class="item05 c">
-                <img src="../storage/img/pantalon05.png" alt="pantalon05">
-                <div class="container">
-                    <p>Pantalon Camuflado, De Bolsillos 100% Dreal</p>
-                    <div>
-                        <p>$ 2.000</p>
-                        <button onclick="incrementar('contador')">Agregar</button>
-                    </div>
-                </div>
-            </div>
-            <div class="item06 c">
-                <img src="../storage/img/pantalon06.png" alt="pantalon06">
-                <div class="container">
-                    <p>Pantalon Azul Bota Ahcha, Altura de Cadera</p>
-                    <div>
-                        <p>$ 2.500</p>
-                        <button onclick="incrementar('contador')">Agregar</button>
-                    </div>
-                </div>
-            </div>
-            <div class="item07 c">
-                <img src="../storage/img/pantalon07.png" alt="pantalon07">
-                <div class="container">
-                    <p>Pantalon de Vestir Azul Marino</p>
-                    <div>
-                        <p>$ 2.000</p>
-                        <button onclick="incrementar('contador')">Agregar</button>
-                    </div>
-                </div>
-            </div>
-            <div class="item08 c">
-                <img src="../storage/img/pantalon08.png" alt="pantalon08">
-                <div class="container">
-                    <p>Jean Casual para hombre</p>
-                    <div>
-                        <p>$ 2.000</p>
-                        <button onclick="incrementar('contador')">Agregar</button>
-                    </div>
-                </div>
-            </div>
-            <div class="item09 c">
-                <img src="../storage/img/pantalon09.png" alt="pantalon09">
-                <div class="container">
-                    <p>Jogger Negro Bota Ancha con Bolsillos</p>
-                    <div>
-                        <p>$ 2.500</p>
-                        <button onclick="incrementar('contador')">Agregar</button>
-                    </div>
-                </div>
-            </div>
+            {% endif %}
+            {% endfor %}
         </div>
     </main>
 </body>
