@@ -101,19 +101,8 @@ header a:hover{
     margin: auto;
     width: 70vw;
     height:75vh;
-    display: grid;
-    grid-template-columns:.1fr repeat(4, 1fr);
-    grid-template-rows: repeat(8, 1fr);
-    grid-template-areas:
-    ". . . . . "
-    ". item01 item02 item03 item04 "
-    ". item05 item06 item07 item08 "
-    ". item09 item10 item11 item12 "
-    ". item13 item14 item15 item16 "
-    ". item17 item18 item19 item20 "
-    ". item21 item22 item23 item24 "
-    ". item25 item26 item27 ."
-    ;
+    display:flex;
+    flex-wrap: wrap;
 }
 ::-webkit-scrollbar {
     width: .7em;
@@ -144,9 +133,13 @@ main h1{
     font-family: monospace;
     text-transform: uppercase;
 }
-.main .c{
+.main .item{
     margin: 1em;
-    width: 90%;
+    width: 20vw;
+}
+.main .item img{
+    width: 20vw;
+    height: 50vh;
 }
 .main .container{
     margin-top: -2em;
@@ -186,92 +179,6 @@ main h1{
 .main .container button:hover{
     cursor: pointer;
     color: var(--color-naranja);
-}
-.item01{
-    grid-area: item01;
-}
-.item02{
-    grid-area: item02;
-}
-.item03{
-    grid-area: item03;
-}
-.item04{
-    grid-area: item04;
-}
-.item05{
-    grid-area: item05;
-}
-.item06{
-    grid-area: item06;
-}
-.item07{
-    grid-area: item07;
-}
-.item08{
-    grid-area: item08;
-}
-.item09{
-    grid-area: item09;
-}
-.item10 {
-    grid-area: item10;
-}
-.item11 {
-    grid-area: item11;
-}
-.item12 {
-    grid-area: item12;
-}
-.item13 {
-    grid-area: item13;
-}
-.item14 {
-    grid-area: item14;
-}
-.item15 {
-    grid-area: item15;
-}
-.item16 {
-    grid-area:  item16;
-}
-.item17 {
-    grid-area: item17;
-}
-.item18{
-    grid-area: item18;
-}
-.item19 {
-    grid-area: item19;
-}
-.item20 {
-    grid-area: item20;
-}
-.item21 {
-    grid-area: item21;
-}
-.item22 {
-    grid-area: item22;
-}
-.item23 {
-    grid-area: item23;
-}
-.item24 {
-    grid-area: item24;
-}
-.item25{
-    grid-area: item25;
-}
-.item26 {
-    grid-area: item26;
-}
-.item27 {
-    grid-area: item27;
-}
-.main img{
-    z-index: -10;
-    width: 100%;
-    height: 17em;
 }
 
 @media (width <= 700px){
@@ -346,7 +253,7 @@ main h1{
         padding: 0;
         color: var(--color-negro);
     }
-    .main .c{
+    .main .item{
         margin: .6em;
         width: 90%;
     }

@@ -4,9 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Abrigos</title>
-    <link rel="stylesheet" href="../css/abrigos.css">
+    <!-- <link rel="stylesheet" href='{{url_for("static", filename="css/style.css")}}'> -->
+    <link rel="stylesheet" href="../static/css/abrigos.css">
     <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
-    <script src="../js/main.js"></script>
+    <script src="../static/js/main.js"></script>
 </head>
 <body>
     <header>
@@ -22,27 +23,26 @@
         </div>
         <nav class="categorias" id="menu">
             <ul>
-                <li>
-                    <i class='bx bx-closet'></i>
-                    <a href="../index.html">Todos los productos</a>
-                </li>
                 <li class="home">
-                    <img src="../storage/img/icons8-fireman-coat-50.png" alt="">
-                    <a href="abrigos.html">Abrigos</a>
+                    <i class='bx bx-closet'></i>
+                    <a href="{{ url_for('index') }}">Todos los productos</a>
                 </li>
                 <li>
-                    <img src="../storage/img/icons8-polo-shirt-50.png" alt="">
-                    <a href="camisetas.html">Camisetas</a>
+                    <img src="storage/img/icons8-fireman-coat-50.png" alt="">
+                    <a href="{{ url_for('abrigos') }}">Abrigos</a>
                 </li>
                 <li>
-                    <img src="../storage/img/icons8-pant.png" alt="">
-                    <a href="pantalones.html">Pantalones</a>
+                    <img src="storage/img/icons8-polo-shirt-50.png" alt="">
+                    <a href="{{ url_for('abrigos') }}">Camisetas</a>
+                </li>
+                <li>
+                    <img src="storage/img/icons8-pant.png" alt="">
+                    <a href="{{ url_for('pantalones') }}">Pantalones</a>
                 </li>
             </ul>
-        </nav>
-        <nav class="carritos" id="menu">
+        </nav>        <nav class="carritos" id="menu">
             <i class='bx bxs-cart'></i>
-            <a href="carritos.html">Carritos</a>
+            <a href="{{ url_for('carritos') }}">Carritos</a>
             <button id="contador">0</button>
         </nav>
         <nav class="copy" id="menu">
