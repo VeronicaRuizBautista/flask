@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Abrigos</title>
     <!-- <link rel="stylesheet" href='{{url_for("static", filename="css/style.css")}}'> -->
-    <link rel="stylesheet" href="../static/css/abrigos.css">
+    <link rel="stylesheet" href="../static/css/style.css">
     <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
     <script src="../static/js/main.js"></script>
 </head>
@@ -28,19 +28,20 @@
                     <a href="{{ url_for('index') }}">Todos los productos</a>
                 </li>
                 <li>
-                    <img src="storage/img/icons8-fireman-coat-50.png" alt="">
+                    <img src="../static/storage/img/icons8-fireman-coat-50.png" alt="">
                     <a href="{{ url_for('abrigos') }}">Abrigos</a>
                 </li>
                 <li>
-                    <img src="storage/img/icons8-polo-shirt-50.png" alt="">
+                    <img src="../static/storage/img/icons8-polo-shirt-50.png" alt="">
                     <a href="{{ url_for('abrigos') }}">Camisetas</a>
                 </li>
                 <li>
-                    <img src="storage/img/icons8-pant.png" alt="">
+                    <img src="../static/storage/img/icons8-pant.png" alt="">
                     <a href="{{ url_for('pantalones') }}">Pantalones</a>
                 </li>
             </ul>
-        </nav>        <nav class="carritos" id="menu">
+        </nav>        
+        <nav class="carritos" id="menu">
             <i class='bx bxs-cart'></i>
             <a href="{{ url_for('carritos') }}">Carritos</a>
             <button id="contador">0</button>
@@ -55,96 +56,20 @@
             <h1>Abrigos</h1>
         </div>
         <div class="main">
-            <div class="item01 c">
-                <img src="../storage/img/abrigo01.png" alt="abrigo01">
-                <div class="container">
-                    <p>Chaqueta Impermeable En Gabán Para Dama Azul</p>
-                    <div>
-                        <p>$ 1.000</p>
-                        <button onclick="incrementar('contador')">Agregar</button> 
-                    </div> 
-                </div>
-            </div>
-            <div class="item02 c">
-                <img src="../storage/img/abrigo02.png" alt="abrigo02">
-                <div class="container">
-                    <p>Chaqueta Impermeable En Gabán Para Dama 'Negro'</p>
-                    <div>
-                        <p>$ 2.000</p>
-                        <button onclick="incrementar('contador')">Agregar</button>
+            {% for item in data %}
+            {% if item.get("id") =="abrigo" %}
+                <div class="item">
+                    <img src='{{item.get("img")}}' alt="abrigo01">
+                    <div class="container">
+                        <p>{{item.get("description")}}</p>
+                        <div>
+                            <p>$ {{item.get("value")}}</p>
+                            <button onclick="incrementar('contador')">Agregar</button> 
+                        </div> 
                     </div>
                 </div>
-            </div>
-            <div class="item03 c">
-                <img src="../storage/img/abrigo03.png" alt="abrigo03">
-                <div class="container">
-                    <p>Chaqueta Impermeable En Gabán Para Dama 'Blanco'</p>
-                    <div>
-                        <p>$ 2.500</p>
-                        <button onclick="incrementar('contador')">Agregar</button>
-                    </div>
-                </div>
-            </div>
-            <div class="item04 c">
-                <img src="../storage/img/abrigo04.png" alt="abrigo04">
-                <div class="container">
-                    <p>Chaqueta Hombre Cuero Sintético</p>
-                    <div>
-                        <p>$ 2.500</p>
-                        <button onclick="incrementar('contador')">Agregar</button>
-                    </div>
-                </div>
-            </div>
-            <div class="item05 c">
-                <img src="../storage/img/abrigo05.png" alt="abrigo05">
-                <div class="container">
-                    <p>Chamrra moderna unisex</p>
-                    <div>
-                        <p>$ 2.000</p>
-                        <button onclick="incrementar('contador')">Agregar</button>
-                    </div>
-                </div>
-            </div>
-            <div class="item06 c">
-                <img src="../storage/img/abrigo06.png" alt="abrigo06">
-                <div class="container">
-                    <p>Abrigo largo color cafe</p>
-                    <div>
-                        <p>$ 2.500</p>
-                        <button onclick="incrementar('contador')">Agregar</button>
-                    </div>
-                </div>
-            </div>
-            <div class="item07 c">
-                <img src="../storage/img/abrigo07.png" alt="abrigo07">
-                <div class="container">
-                    <p>Abrigo de invierno blanco</p>
-                    <div>
-                        <p>$ 2.000</p>
-                        <button onclick="incrementar('contador')">Agregar</button>
-                    </div>
-                </div>
-            </div>
-            <div class="item08 c">
-                <img src="../storage/img/abrigo08.png" alt="abrigo08">
-                <div class="container">
-                    <p>Esmoking elegante para hombre</p>
-                    <div>
-                        <p>$ 2.000</p>
-                        <button onclick="incrementar('contador')">Agregar</button>
-                    </div>
-                </div>
-            </div>
-            <div class="item09 c">
-                <img src="../storage/img/abrigo09.png" alt="abrigo09">
-                <div class="container">
-                    <p>Abrigo imperneable azul cielo</p>
-                    <div>
-                        <p>$ 2.500</p>
-                        <button onclick="incrementar('contador')">Agregar</button>
-                    </div>
-                </div>
-            </div>
+            {% endif %}
+            {% endfor %}
         </div>
     </main>
 </body>
